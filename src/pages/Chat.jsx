@@ -30,7 +30,13 @@ const Chat = ({ ingredientList }) => {
         }),
       });
 
-      const result = response.json();
+      const result = await response.json();
+
+      // chatGPT의 답변 추가
+      const { role, content } = result.data;
+      const assistantMessage = { role, content };
+      setMessages((prev) => [...prev, assistantMessage]);
+
       console.log("🚀 ~ sendMessage ~ result:", result);
     } catch (error) {
       console.error(error);
