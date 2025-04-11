@@ -41,6 +41,8 @@ const Chat = ({ ingredientList }) => {
     } catch (error) {
       console.error(error);
     } finally {
+      // try 혹은 error 구문 실행후 실행되는 곳
+      setIsMessageLoading(false);
     }
   };
 
@@ -52,6 +54,9 @@ const Chat = ({ ingredientList }) => {
 
     // 지금까지의 대화 목록으로 api호출
     sendMessage(userMessage);
+
+    // input 초기화
+    setValue("");
   };
   // 최초 정보 세팅
   const sendInfo = async () => {
